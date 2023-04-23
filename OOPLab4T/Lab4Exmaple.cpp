@@ -6,7 +6,8 @@
 
 
 
-int mainExample1() {
+int mainExample1() 
+{
 
 	/// <summary>
 	/// Задано : A,B,C,D,F  -  Вектори комплесних чисел 
@@ -60,7 +61,8 @@ int mainExample1() {
 	/// </summary>
 	/// <returns></returns>
 
-int mainExample2() {
+int mainExample2() 
+{
 	ComplexMatrix A(5),  B(5), C(5), D(5), F(5);
 	ComplexVector a(5), b(5), c(5);
 	ComplexDouble _a(3.2, 5), _b(1, 2), _c = RandComplexDouble();
@@ -93,7 +95,8 @@ int mainExample2() {
 	
 	return 3;
 }
-int mainExample3() {
+int mainExample3() 
+{
 	cout << " End begin \n";
 	uint Flight[5] = { 12,32,23,43,43 };
 	MyTime MTime[5] = { {9,10}, {10,30}, {10,30}, {10,30} , {15,35} };
@@ -102,10 +105,8 @@ int mainExample3() {
 	MyTime r = { 10,30 }, ro;
 	uint fli = 32;
 	ro = dbase[fli];
-	cout << " Test : MyTime operator[](uint&s  )  " << "Flight " << fli << " time   " <<
-		ro << endl;
-	cout << " Test : uint	operator[](MyTime&s)  " << " time  " << r << " light  " <<
-		dbase[r] << endl;
+	cout << " Test : MyTime operator[](uint&s  )  " << "Flight " << fli << " time   " << ro << endl;
+	cout << " Test : uint	operator[](MyTime&s)  " << " time  " << r << " light  " << dbase[r] << endl;
 	cout << " Flight with time :   9   to  11 \n";
 	dbase(9, 11);
 	cout << " End test \n";

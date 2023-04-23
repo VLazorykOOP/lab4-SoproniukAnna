@@ -144,12 +144,17 @@
     <ClCompile Include="Lab4Exmaple.cpp" />
     <ClCompile Include="MyAssoc.cpp" />
     <ClCompile Include="OOPLab4T.cpp" />
+    <ClCompile Include="Task.cpp" />
+    <ClCompile Include="Task2.cpp" />
+    <ClCompile Include="TVectorULong.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComplexMatrix.h" />
     <ClInclude Include="ComplexVector.h" />
     <ClInclude Include="Lab4Exmaple.h" />
     <ClInclude Include="MyAssoc.h" />
+    <ClInclude Include="Task.h" />
+    <ClInclude Include="TVectorULong.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
