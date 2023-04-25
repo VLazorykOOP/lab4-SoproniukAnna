@@ -6,22 +6,27 @@ private:
     unsigned long* array = nullptr;
     int size = 0;
     int state = 0; //1 - несумісність, 2 - ділення на 0, 3 - індекс за межами масиву, 4 - унарний мінус
+    static int counter;
 public:
     TVectorULong();
     TVectorULong(int size);
     TVectorULong(int size, unsigned long value);
     TVectorULong(const TVectorULong& p);
+    TVectorULong(const TVectorULong&& p);
     ~TVectorULong();
     
     //Unari
     TVectorULong& operator++();
     TVectorULong& operator--();
+    TVectorULong operator++(int);
+    TVectorULong operator--(int);
     bool operator!();
     TVectorULong& operator~();
     TVectorULong& operator-();
     
     //Appropriation
     TVectorULong& operator=(TVectorULong& p);
+    //TVectorULong& operator=(TVectorULong&& p);
     TVectorULong& operator+=(TVectorULong& p);
     TVectorULong& operator-=(TVectorULong& p);
     TVectorULong& operator*=(unsigned long value);
@@ -37,6 +42,8 @@ public:
     TVectorULong& operator*(unsigned long value);
     TVectorULong& operator/(unsigned long value);
     TVectorULong& operator%(unsigned long value);
+    
+    //friend TVectorULong& operator+(TVectorULong& v1, TVectorULong& v2);
 
     //Bitwise binary
     TVectorULong& operator|(TVectorULong& p);
@@ -64,6 +71,8 @@ public:
     bool operator>=(TVectorULong& p);
     bool operator<(TVectorULong& p);
     bool operator<=(TVectorULong& p);
+
+    void Print();
 };
 
 

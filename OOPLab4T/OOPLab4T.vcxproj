@@ -151,7 +151,10 @@
   <ItemGroup>
     <ClInclude Include="ComplexMatrix.h" />
     <ClInclude Include="ComplexVector.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="Header1.h" />
     <ClInclude Include="Lab4Exmaple.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="MyAssoc.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TVectorULong.h" />
