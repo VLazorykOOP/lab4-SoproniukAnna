@@ -32,7 +32,7 @@ TVectorULong::TVectorULong(const TVectorULong& p)
 	this->counter++;
 }
 
-TVectorULong::TVectorULong(const TVectorULong&& p)
+/*TVectorULong::TVectorULong(const TVectorULong&& p)
 {
 	this->size = p.size;
 	this->state = p.state;
@@ -43,7 +43,7 @@ TVectorULong::TVectorULong(const TVectorULong&& p)
 		for (int i = 0; i < this->size; i++)
 			this->array[i] = p.array[i];
 	this->counter++;
-}
+}*/
 
 TVectorULong::~TVectorULong()
 {
@@ -105,8 +105,7 @@ TVectorULong& TVectorULong::operator-()
 
 
 
-//----------------Appropriation----------------
-TVectorULong& TVectorULong::operator=(TVectorULong& p)
+TVectorULong& TVectorULong::operator=(TVectorULong p)
 {
 	this->size = p.size;
 	delete[] array;
@@ -115,6 +114,17 @@ TVectorULong& TVectorULong::operator=(TVectorULong& p)
 		this->array[i] = p.array[i];
 	return *this;
 }
+
+//----------------Appropriation----------------
+//TVectorULong& TVectorULong::operator=(const TVectorULong& p)
+//{
+//	this->size = p.size;
+//	delete[] array;
+//	unsigned long* array{ new unsigned long[p.size] };
+//	for (int i = 0; i < p.size; i++)
+//		this->array[i] = p.array[i];
+//	return *this;
+//}
 
 /*TVectorULong& TVectorULong::operator=(TVectorULong&& p)
 {
@@ -221,7 +231,7 @@ TVectorULong& TVectorULong::operator&=(TVectorULong& p)
 
 
 //----------------Arithmetic binary----------------
-TVectorULong& TVectorULong::operator+(TVectorULong& p)
+TVectorULong TVectorULong::operator+(TVectorULong& p)
 {
     TVectorULong tmp(this->size);
 	if (this->size!=p.size)
@@ -234,7 +244,7 @@ TVectorULong& TVectorULong::operator+(TVectorULong& p)
 	return tmp;
 }
 
-TVectorULong& TVectorULong::operator-(TVectorULong& p)
+TVectorULong TVectorULong::operator-(TVectorULong& p)
 {
 	TVectorULong tmp(this->size);
 	if (this->size != p.size)
@@ -247,7 +257,7 @@ TVectorULong& TVectorULong::operator-(TVectorULong& p)
 	return tmp;
 }
 
-TVectorULong& TVectorULong::operator*(unsigned long value)
+TVectorULong TVectorULong::operator*(unsigned long value)
 {
 	TVectorULong tmp(this->size);
 	for (int i = 0; i < this->size; i++)
@@ -255,7 +265,7 @@ TVectorULong& TVectorULong::operator*(unsigned long value)
 	return tmp;
 }
 
-TVectorULong& TVectorULong::operator/(unsigned long value)
+TVectorULong TVectorULong::operator/(unsigned long value)
 {
 	TVectorULong tmp(this->size);
 	if (value == 0)
@@ -268,7 +278,7 @@ TVectorULong& TVectorULong::operator/(unsigned long value)
 	return tmp;
 }
 
-TVectorULong& TVectorULong::operator%(unsigned long value)
+TVectorULong TVectorULong::operator%(unsigned long value)
 {
 	TVectorULong tmp(this->size);
 	if (value == 0)
@@ -284,7 +294,7 @@ TVectorULong& TVectorULong::operator%(unsigned long value)
 
 
 //----------------Bitwise binary----------------
-TVectorULong& TVectorULong::operator|(TVectorULong& p)
+TVectorULong TVectorULong::operator|(TVectorULong& p)
 {
 	TVectorULong tmp(this->size);
 	if (this->size != p.size)
@@ -297,7 +307,7 @@ TVectorULong& TVectorULong::operator|(TVectorULong& p)
 	return tmp;
 }
 
-TVectorULong& TVectorULong::operator^(TVectorULong& p)
+TVectorULong TVectorULong::operator^(TVectorULong& p)
 {
 	TVectorULong tmp(this->size);
 	if (this->size != p.size)
@@ -310,7 +320,7 @@ TVectorULong& TVectorULong::operator^(TVectorULong& p)
 	return tmp;
 }
 
-TVectorULong& TVectorULong::operator&(TVectorULong& p)
+TVectorULong TVectorULong::operator&(TVectorULong& p)
 {
 	TVectorULong tmp(this->size);
 	if (this->size != p.size)
@@ -325,7 +335,7 @@ TVectorULong& TVectorULong::operator&(TVectorULong& p)
 
 
 //----------------Indexing----------------
-unsigned long TVectorULong::operator[](const int index)
+unsigned long& TVectorULong::operator[](const int index)
 {
 	if (index < 0 || index > this->size)
 	{
@@ -338,16 +348,27 @@ unsigned long TVectorULong::operator[](const int index)
 //----------------New----------------
 void* TVectorULong::operator new(size_t size)
 {
-		return new unsigned long[size] {};
+	cout << endl << "Operator new worked" << endl;
+	TVectorULong temp = TVectorULong(size);
+	return &temp;
+		//return new unsigned long[size] {};
 }
 
 //----------------Delete----------------
 void TVectorULong::operator delete(void* pointer)
 {
+	cout << endl << "Operator delete worked" << endl;
 	delete[] pointer;
 }
 
-
+//----------------()----------------
+unsigned long TVectorULong::operator()() 
+{
+	double abs = 0;
+	for (int i = 0; i < size; i++)
+		abs += (array[i] * array[i]);
+	return sqrt(abs);
+}
 
 //----------------Comparison size----------------
 bool TVectorULong::operator==(TVectorULong& p)
@@ -410,20 +431,6 @@ void TVectorULong::Print()
 	cout << endl << endl;
 }
 
-
-
-/*TVectorULong& operator+(TVectorULong& v1, TVectorULong& v2)
-{
-	TVectorULong tmp(v1.size);
-	if (v1.size != v2.size)
-	{
-		tmp.state = 1;
-		return tmp;
-	}
-	for (int i = 0; i < v1.size; i++)
-		tmp.array[i] = v1.array[i] + v2.array[i];
-	return tmp;
-}*/
 
 //----------------Bitwise shift operations----------------
 TVectorULong& operator>>(TVectorULong& p, unsigned long value)

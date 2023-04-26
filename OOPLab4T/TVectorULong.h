@@ -12,7 +12,7 @@ public:
     TVectorULong(int size);
     TVectorULong(int size, unsigned long value);
     TVectorULong(const TVectorULong& p);
-    TVectorULong(const TVectorULong&& p);
+    //TVectorULong(const TVectorULong&& p);
     ~TVectorULong();
     
     //Unari
@@ -25,7 +25,7 @@ public:
     TVectorULong& operator-();
     
     //Appropriation
-    TVectorULong& operator=(TVectorULong& p);
+    TVectorULong& operator=(TVectorULong p);
     //TVectorULong& operator=(TVectorULong&& p);
     TVectorULong& operator+=(TVectorULong& p);
     TVectorULong& operator-=(TVectorULong& p);
@@ -37,32 +37,31 @@ public:
     TVectorULong& operator&=(TVectorULong& p);
 
     //Arithmetic binary
-    TVectorULong& operator+(TVectorULong& p);
-    TVectorULong& operator-(TVectorULong& p);
-    TVectorULong& operator*(unsigned long value);
-    TVectorULong& operator/(unsigned long value);
-    TVectorULong& operator%(unsigned long value);
-    
-    //friend TVectorULong& operator+(TVectorULong& v1, TVectorULong& v2);
+    TVectorULong operator+(TVectorULong& p);
+    TVectorULong operator-(TVectorULong& p);
+    TVectorULong operator*(unsigned long value);
+    TVectorULong operator/(unsigned long value);
+    TVectorULong operator%(unsigned long value);
 
     //Bitwise binary
-    TVectorULong& operator|(TVectorULong& p);
-    TVectorULong& operator^(TVectorULong& p);
-    TVectorULong& operator&(TVectorULong& p);
+    TVectorULong operator|(TVectorULong& p);
+    TVectorULong operator^(TVectorULong& p);
+    TVectorULong operator&(TVectorULong& p);
 
     //bitwise shift operations
     friend TVectorULong& operator>>(TVectorULong& p, unsigned long value);
     friend TVectorULong& operator<<(TVectorULong& p, unsigned long value);
     
     //Indexing
-    unsigned long operator[](const int index);
+    unsigned long& operator[](const int index);
 
     //New
     void* operator new(size_t size);
+
     //Delete
     void operator delete(void* pointer);
  
-    //()
+    unsigned long operator()();
      
     //comparison //size
     bool operator==(TVectorULong& p);

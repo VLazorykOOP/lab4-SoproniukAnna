@@ -8,9 +8,6 @@
 #include "Task2.cpp"
 #include "TVectorULong.h"
 using namespace std;
-// Ваші файли загловки 
-//
-//#include "Lab4Exmaple.h"
 
 #include "Task.h"
 
@@ -45,7 +42,6 @@ void MainMenu()
         }
     } while (select != 0);
 }
-
 void UnariMenu()
 {
     int select = 0;
@@ -210,7 +206,6 @@ void AppropriationMenu()
         }
     } while (select != 0);
 }
-
 void ArithmeticBinaryMenu()
 {
     int select = 0;
@@ -269,7 +264,6 @@ void ArithmeticBinaryMenu()
         }
     } while (select != 0);
 } 
-/**/
 void BitwiseBinaryMenu()
 {
     int select = 0;
@@ -311,12 +305,76 @@ void BitwiseBinaryMenu()
             break;
         }
     } while (select != 0);
-}/**/
-/**/
-
+}
 void BitwiseShiftOperationsMenu() 
-{}
-void IndexingNewDeleteFunctionMenu() {}
+{
+    int select = 0;
+    do
+    {
+        cout << "Select option " << endl;
+        cout << "1. >>" << endl;
+        cout << "2. <<" << endl;
+        cout << "0. Exit" << endl;
+        cin >> select;
+        system("cls");
+
+        switch (select)
+        {
+        case 1:
+            cout << "Prev state: " << endl;
+            vl.Print();
+            vl >> 5;
+            cout << "After >>: " << endl;
+            vl.Print();
+            break;
+        case 2:
+            cout << "Prev state: " << endl;
+            vl.Print();
+            vl << 5;
+            cout << "After << " << endl;
+            vl.Print();
+            break;
+        default:
+            system("cls");
+            break;
+        }
+    } while (select != 0);
+}
+void IndexingNewDeleteFunctionMenu()
+{
+    int select = 0;
+    do
+    {
+        cout << "Select option " << endl;
+        cout << "1. []" << endl;
+        cout << "2. New " << endl;
+        cout << "3. Delete" << endl;
+        cout << "4. ()" << endl;
+        cout << "0. Exit" << endl;
+        cin >> select;
+        system("cls");
+
+        switch (select)
+        {
+        case 1:
+            cout << "Prev state: " << endl;
+            vl.Print();
+            cout << (vl[9]) << endl;
+            vl.Print();
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        default:
+            system("cls");
+            break;
+        }
+    } while (select != 0);
+}
+/*  */
 void ComparisonMenu()
 {
     int select = 0;
