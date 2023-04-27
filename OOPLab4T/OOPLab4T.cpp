@@ -7,10 +7,10 @@
 #include <iostream>
 #include "Task2.cpp"
 #include "TVectorULong.h"
+#include "Task2.h"
 using namespace std;
 
 #include "Task.h"
-
 TVectorULong vl(3, 3), vl1(3, 1), vl2(3, 2);
 
 void MenuTask1();
@@ -233,7 +233,7 @@ void ArithmeticBinaryMenu()
         case 2:
             cout << "Prev state: " << endl;
             vl.Print();
-            vl = vl1 - vl2;
+            vl = vl2 - vl1;
             cout << "After -: " << endl;
             vl.Print();
             break;
@@ -436,6 +436,7 @@ void ComparisonMenu()
     } while (select != 0);
 }
 
+
 void MenuTask1()
 {
     int select = 0;
@@ -486,5 +487,5 @@ void MenuTask1()
 
 int main()
 {
-    MainMenu();
+    MainMenu();   
 }

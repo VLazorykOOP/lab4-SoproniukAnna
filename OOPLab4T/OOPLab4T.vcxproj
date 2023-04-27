@@ -157,6 +157,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MyAssoc.h" />
     <ClInclude Include="Task.h" />
+    <ClInclude Include="Task2.h" />
     <ClInclude Include="TVectorULong.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
