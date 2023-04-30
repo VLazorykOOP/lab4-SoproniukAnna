@@ -10,11 +10,11 @@ class TArchive
 private:
 	pair<int, string>book[SIZE];
 	int size = 0;
-	int CodeError = 0; // 1 - Wrong index
+	int CodeError = 0; // 1 - Overflow 2 - Wrong index
 public:
 	TArchive();
 
-	void AddBook(int number, string name);
+	void AddBook(int size, int number, string name);
 	
 	pair<int, string>& operator[](int& number);
 	pair<int, string>& operator[](string& name);

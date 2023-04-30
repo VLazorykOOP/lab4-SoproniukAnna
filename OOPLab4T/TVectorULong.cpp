@@ -6,7 +6,7 @@ using namespace std;
 
 int TVectorULong::counter = 0;
 
-TVectorULong::TVectorULong() : TVectorULong(1,0){}
+TVectorULong::TVectorULong() : TVectorULong(1, 0) {}
 
 TVectorULong::TVectorULong(int size) : TVectorULong(size, 0){}
 
