@@ -13,8 +13,13 @@ private:
 	int CodeError = 0; // 1 - Overflow 2 - Wrong index
 public:
 	TArchive();
+	TArchive(int number, string name);
+	~TArchive();
 
-	void AddBook(int size, int number, string name);
+	int getCodeError();
+	int getSize();
+
+	void AddBook(int number, string name);
 	
 	pair<int, string>& operator[](int& number);
 	pair<int, string>& operator[](string& name);

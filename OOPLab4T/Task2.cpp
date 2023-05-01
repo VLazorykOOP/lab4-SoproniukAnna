@@ -7,7 +7,25 @@ using namespace std;
 
 TArchive::TArchive(){}
 
-void TArchive::AddBook(int size, int number, string name)
+TArchive::TArchive(int number, string name)
+{
+	this->book[0].first = number;
+	this->book[0].second = name;
+}
+
+TArchive::~TArchive(){}
+
+int TArchive::getCodeError()
+{
+	return this->CodeError;
+}
+
+int TArchive::getSize()
+{
+	return this->size;
+}
+
+void TArchive::AddBook(int number, string name)
 {
 	if (this->size == SIZE)
 		CodeError = 1;
@@ -56,5 +74,6 @@ ostream& operator<<(ostream& os, const TArchive arch)
 {
 	for (int i = 0; i < arch.size; i++)
 		os << arch.book[i].first << "\t" << arch.book[i].second << endl;
+	os << "Code error: " << arch.CodeError << endl;
 	return os;
 }

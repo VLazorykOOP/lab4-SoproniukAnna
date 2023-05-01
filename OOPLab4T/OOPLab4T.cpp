@@ -6,21 +6,22 @@
 
 #include <iostream>
 #include "TVectorULong.h"
+#include "Task2.h"
 using namespace std;
 
-#include "Task.h"
+//#include "Task.h"
 
 TVectorULong vl(3, 3), vl1(3, 1), vl2(3, 2);
 
 void MenuTask1();
+void MenuTask2();
 
 void MainMenu()
 {
     int select = 0;
-    cout << '\t' << '\t' << '\t' << "Main Menu" << endl;
     do
     {
-        cout << "Select option " << endl;
+        cout << '\t' << '\t' << '\t' << "Main Menu" << endl;
         cout << "1. Task 1" << endl;
         cout << "2. Task 2" << endl;
         cout << "0. Exit" << endl;
@@ -33,7 +34,7 @@ void MainMenu()
             MenuTask1();
             break;
         case 2:
-            Task2();
+            MenuTask2();
             break;
         default:
             system("cls");
@@ -41,6 +42,7 @@ void MainMenu()
         }
     } while (select != 0);
 }
+
 void UnariMenu()
 {
     int select = 0;
@@ -439,7 +441,7 @@ void MenuTask1()
     int select = 0;
     do
     {
-        cout << "Select option " << endl;
+        cout << '\t' << '\t' << '\t' << "Select option " << endl;
         cout << "1. Unari" << endl;
         cout << "2. Appropriation" << endl;
         cout << "3. Arithmetic binary" << endl;
@@ -478,6 +480,62 @@ void MenuTask1()
             system("cls");
             break;
         }
+    } while (select != 0);
+}
+void MenuTask2()
+{
+    TArchive archive;
+    int select = 0;
+    int numb;
+    string name;
+    do
+    {
+        cout << '\t' << '\t' << '\t' << "Select option " << endl;
+        cout << "1. Add book" << endl;
+        cout << "2. Index number" << endl;
+        cout << "3. Index name" << endl;
+        cout << "4. Print archive" << endl;
+        cout << "0. Exit" << endl;
+        cin >> select;
+        system("cls");
+
+        if (select == 1)
+        {
+            system("cls");
+            cout << "Size: " << archive.getSize() + 1 << endl;
+            cout << "Code error: " << archive.getCodeError() << endl;
+            cout << "Input info book(Number, name): " << endl;
+            cout << "Input number: ";
+            cin >> numb;
+            cout << "Input name: ";
+            cin >> name;
+            archive.AddBook(numb, name);
+        }
+        else if (select == 2)
+        {
+            system("cls");
+            cout << "Input number: ";
+            cin >> numb;
+            pair<int, string>Book = archive.operator[](numb);
+            cout << Book.first << '\t' << Book.second << endl;
+            cout << "Code error: " << archive.getCodeError() << endl;
+        }
+        else if (select == 3)
+        {
+            system("cls");
+            cout << "Input name: ";
+            cin >> name;
+            pair<int, string>Book = archive.operator[](name);
+            cout << Book.first << '\t' << Book.second << endl;
+            cout << "Code error: " << archive.getCodeError() << endl;
+        }
+        else if (select == 4)
+        {
+            system("cls");
+            cout << archive;
+        }
+        else
+            system("cls");
     } while (select != 0);
 }
 
